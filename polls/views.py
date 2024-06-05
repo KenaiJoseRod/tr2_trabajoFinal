@@ -309,4 +309,38 @@ def buscadormes(request):
             messages.error(request, 'Debe seleccionar una fecha.')
             return render(request, 'form_contMes.html')
     else:
-        return render(request, 'form_ccontMes.html')
+        return render(request, 'form_contMes.html')
+    
+@login_required(login_url='login')    
+def mostrarFormDetCod(request, cnt_codigo):
+    try:
+        with connection.cursor() as cursor:
+            cursor.callproc('sp_MostrarDetPorcod', [cnt_codigo])
+            pro = cursor.fetchone()
+
+        # Formatea las fechas si es necesario
+        if pro:
+            pro = {
+                'nombre_contrato': pro[0],
+                'cnt_codigo': pro[1],
+                'estado': pro[2],
+                'direccion_cliente':pro[9],
+                'nombre_cliente': pro[3],
+                'nombre_trabajador': pro[3],
+                'nombre_cliente': pro[2],
+                'cod_inm': pro[11],
+                'dni':pro[4],
+                'valor_contrato':pro[6],
+                'metodo':pro[5],
+                'fecha_contrato': pro[7],
+                'tipo_inmueble':pro[13],
+                'descripcion_inmueble': pro[12]
+            }
+
+        datos = { 'pro' : pro }
+        return render(request, 'form_verDet.html', datos)
+        
+    except Exception as e:
+        # Manejo de errores
+        return render(request, 'error.html', {'error': str(e)})
+    

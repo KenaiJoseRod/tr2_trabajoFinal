@@ -45,7 +45,10 @@ urlpatterns = [
     path('buscarXaño', views.buscadoraño),
     
     path('form_conXmes', views.mostrarContmes),
-    path('buscarXmes', views.buscadormes)
+    path('buscarXmes', views.buscadormes),
+
+    path('form_verDet/<str:cnt_codigo>', views.mostrarFormDetCod),
+    # path('actualizar/<str:cnt_codigo>', views.actualizarContrato)
 
 
 

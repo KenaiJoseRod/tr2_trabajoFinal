@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Formulario actualizar</title>
+        {% load static %}
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'imagenes/logo.png' %}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'listado.css' %}" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    </head>
+    <style>
+        
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 100%;
+    height: 100vh;
+}
+.grid-container1{
+    grid-column: auto;
+}
+
+.nav-main{
+    width: 100%;
+    padding: 0px 0px 20px 0px;
+    display: flex;
+    padding: 15px 0px;
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,1) 68%, rgba(0,0,0,0.9822303921568627) 87%, rgba(0,0,0,0.5760679271708684) 94%, rgba(0,0,0,0.16150210084033612) 97%, rgba(0,0,0,0) 100%);
+}
+.nav-main a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 10px auto;
+    transition: margin-bottom 0.3s ease, color 0.3s ease, font-size 0.3s ease;
+}
+.nav-main a:hover{
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: underline;
+}
+.div-title{
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.section-container{
+    display: flex;
+}
+.div1{
+    width: 15%;
+    height: auto;
+}
+.div2{
+    width: 70%;
+    height: auto;
+    margin: 60px 0px;
+}
+.div3{
+    width: 15%;
+    height: auto;
+}
+
+.container-contrato{
+    display: flex;
+    margin: 30px auto;
+    display: inline;
+    display: inline-block;
+}
+input{
+    width: 200px;
+    height: auto;
+    vertical-align: middle;
+    display: inline-block;
+    font-size: 1.2rem;
+    border: none;
+    border-bottom: 1px solid #000; /* Línea inferior visible */
+
+}
+select{
+    width: 200px;
+    height: auto;
+    font-size: 1rem;
+    display: inline-block;
+    border: none;
+    border-bottom: 1px solid #000; /* Línea inferior visible */
+}
+p{
+    font-size: 1.3rem;
+    display: inline-block;
+    margin: 0;
+    vertical-align: middle;
+
+}
+button{
+    background-color: whitesmoke;
+    width: auto;
+    height: auto;
+    padding: 2px 4px;
+    font-size: 1.2rem;
+    display: inline-block;
+    border-bottom: 2px solid #000; /* Línea inferior visible */
+
+    
+}
+
+
+.div-flex2{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.subtitlenew{
+    font-size: 1.7rem;
+}
+
+.firmanombre{
+    margin: 0px 0px 60px 0px;
+}
+    </style>
+        {% include "navbar.html" %}
+        {% block content %}
+        {% endblock %}  
+    <body>
+        <div class="div-title">
+            <h1 class="titlenew">Vista contrato</h1>
+        </div>
+        <section class="section-container">
+            
+            <div class="div1"></div><!--LADO IZQUIERDO-->
+        
+        
+            <div class="div2"><!--LADO DEL CENTRO-->
+                <div class="div-subtitle">
+                    <h2 class="subtitlenew">SEÑOR NOTARIO:</h2>
+                </div>
+        
+                <div class="container-contrato">
+                    <p class="text-contrato">Sírvase Ud. extender en su Registro de Escrituras Públicas, una de Compra Venta que celebran de una parte el contrato con código</p> <p style="text-decoration: underline;">{{ pro.cnt_codigo }}</p>
+                    <p class="text-contrato">y nombre </p> <p style="text-decoration: underline;">{{ pro.nombre_contrato }}</u></p>
+                    <p class="text-contrato">Realizado el día</p> <p style="text-decoration: underline;">{{ pro.fecha_contrato}}</p>
+                    <p class="text-contrato">por la empresa peruana ConstruRed, identificado con RUC </p> <p>00000000000</p>
+                    <p class="text-contrato">con domicilio en Calle</p> <p>av.miraflores 450</p>
+                    <p class="text-contrato"> a quien en adelante se le denominará<b>EL VENDEDOR</b>; y de la otra parte el cliente con DNI</p> <p style="text-decoration: underline;">{{ pro.dni}}</p>
+                    <p class="text-contrato">con domicilio en</p> <p style="text-decoration: underline;">{{ pro.direccion_cliente}}</p>
+                    <p class="text-contrato">
+                        a quien en adelante se le denominará <b>EL COMPRADOR</b>; en los términos y condiciones siguientes:</p>
+                </div>
+            
+                    <div class="div-subtitle">
+                        <h2 class="subtitlenew">PRIMERO - ANTECEDENTES:</h2>
+                    </div>
+            
+                <div class="container-contrato">
+                    <p> <b>EL VENDEDOR</b> es propietario del Inmueble</p> <p style="text-decoration: underline;">{{ pro.cod_inm}}</p>
+                    <p class="text-contrato">registrado en la Sede Lima Oficina Registral del Perú</p>
+                    <p> El derecho de propiedad, área, linderos y
+                        medidas perimétricas del inmueble antes mencionado se encuentra debidamente inscrito en la
+                        Partida del Registro de Propiedad Inmueble de la
+                        Zona Sede Lima Oficina Registral del Perú</p>
+                </div>
+            
+                    <div class="div-subtitle">
+                        <h2 class="subtitlenew">SEGUNDO - TRANSFERENCIA:</h2>
+                    </div>
+                
+                <div class="container-contrato">
+                    <p class="text-contrato">Por el mérito de este contrato <b>EL VENDEDOR</b> da en venta real y enajenación  perpetua  a  favor  de
+                        <b>EL COMPRADOR</b>, el inmueble descrito en la cláusula anterior; comprendiéndose en dicha venta,
+                        todo lo inherente y accesorio a las propiedades materia de compra-venta, como son los servicios,
+                        e instalaciones de agua, luz, desagüe, y otras; la fábrica, aire, entradas, salidas, usos y costumbres,
+                        servidumbres, y todo cuanto de hecho o por derecho le corresponda a dicho inmueble, sin reserva
+                        ni limitación alguna.</p>
+                </div>
+            
+                    <div class="div-subtitle">
+                        <h2 class="subtitlenew">TERCERO - PRECIO:</h2>
+                    </div>
+            
+                <div class="container-contrato">
+                    <p class="text-contrato">El  precio  total  de  venta  por  el inmueble  antes  descrito  y  pactado  de  común  acuerdo  es de</p>
+                    <p style="text-decoration: underline;">{{ pro.valor_contrato }}</p>
+                    <p class="text-contrato"> pagado de forma valida con el método de pago</p> <p style="text-decoration: underline;">{{ pro.metodo}}</p>
+                    <p class="text-contrato">que serán cancelados en su totalidad por <b>EL COMPRADOR</b></p>
+                    <p class="text-contrato"> a la firma de la
+                        Escritura Pública, mediante cheque de Gerencia de una entidad financiera, girado a favor del
+                        <b> VENDEDOR</b>, sin más constancia de entrega y recepción de dicha suma que las rúbricas puestas por
+                        ambas partes en la respectiva Escritura Pública, quienes a su vez declaran que la entrega del
+                        referido cheque tendrá efecto cancelatorio</p>
+                </div>
+            
+                    <div class="div-subtitle">
+                        <h2 class="subtitlenew">CUARTO - EQUIVALENCIA DEL PRECIO Y BIEN:</h2>
+                    </div>
+                <div class="container-contrato">
+            
+                    <p class="text-contrato">Ambas  partes  declaran  que  la venta  se realiza <b>AD CORPUS</b> y que existe la más justa y perfecta
+                        equivalencia entre el precio pactado y el valor real del inmueble, materia de venta, y que si alguna diferencia hubiere de más o de menos que al momento no se advierte se hacen de ella mutua
+                        gracia y recíproca donación, renunciando desde ahora en forma expresa a toda acción o excepción
+                        que por error, dolo, u otra causa cualquiera tienda a invalidar este contrato, así como a los plazos
+                        para interponerlas.</p>
+                </div>
+                    
+            
+                    <div class="div-subtitle">
+                        <h2 class="subtitlenew">QUINTO - SANEAMIENTO DE LEY:</h2>
+                    </div>
+                <div class="container-contrato">
+            
+                    <p class="text-contrato"><b>EL VENDEDOR</b> declara que sobre el inmueble que enajena no pesa carga, embargo, medida
+                        judicial o extrajudicial, ni gravamen alguno que en cualquier forma afecte o limite el derecho de su
+                        libre uso y disposición. En todo caso <b>EL VENDEDOR</b>, se obliga al saneamiento de ley en caso de
+                        evicción.</p>
+                </div>
+            
+                <div class="div-subtitle">
+                    <h2 class="subtitlenew">SEXTO.- CARGAS DEL INMUEBLE:</h2>
+                </div>
+                <div class="container-contrato">
+            
+                    <p class="text-contrato">El vendedor asume en forma exclusiva cualquier adeudo que estuviere pendiente de pago
+                        respecto a tributos fiscales y/o municipales, arbitrios, gabelas, consumo de agua y energía
+                        eléctrica, especialmente en lo que se refiere al Impuesto al Valor del Patrimonio Predial, con
+                        anterioridad a la fecha de suscripción de la presente minuta. Todos estos conceptos, que se
+                        generen con fecha posterior a la suscripción de dicho documento, serán de encargo exclusivo de
+                        <b>EL COMPRADOR.</b></p>
+                </div>
+                <div class="div-subtitle">
+                    <h2 class="subtitlenew">SÉPTIMO.- COMPETENCIA</h2>
+                </div>
+                <div class="container-contrato">
+            
+                    <p class="text-contrato">Los contratantes se someten expresamente a la competencia y la jurisdicción de los Jueces y
+                        Tribunales de Lima, para el caso improbable de un litigio derivado de cualquier efecto producido
+                        como consecuencia de la celebración del presente contrato, renunciando de este modo a otro
+                        posible fuero que en el futuro pudiera invocarse.</p>
+                </div>
+            
+                <div class="div-subtitle">
+                    <h2 class="subtitlenew">OCTAVO.- GASTOS NOTARIALES Y REGUSTRALES:</h2>
+                </div>
+                <div class="container-contrato">
+            
+                    <p class="text-contrato">Todos los gastos que en su oportunidad irrogue la elevación a Escritura Pública de la respectiva
+                        minuta de compra-venta, tales como derechos notariales y registrales, serán asumidos
+                        exclusivamente por <b>EL COMPRADOR</b>. </p><br></br>
+                    <p class="text-contrato">Sírvase Ud. Señor Notario, agregar lo que fuera de ley, y enviar los partes correspondientes al
+                        Registro de la Propiedad Inmueble para su correspondiente inscripción</p>
+                </div>
+                <div class="div-flex">
+                    <p>LIMA,
+                   <p style="text-decoration: underline;">{{ pro.fecha_contrato}}</p>
+                </div>
+                
+            </div>
+            
+            <div class="div3"></div> <!--LADO DERECHO-->
+            
+        </section>
+        <div class="div-flex2"><!--FIRMAS-->
+            <input type="text">
+            <input type="text">
+        </div>
+        <div class="div-flex2"><!--NOMBRE-FIRMAS-->
+            <p class="firmanombre"><b>EL VENDEDOR<br>
+                {{pro.nombre_trabajador}}</b></p>
+            <p class="firmanombre"><b>EL COMPRADOR<br>
+                {{pro.nombre_cliente}}</b></p>
+           
+        </div>
+        
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+</html>

@@ -82,3 +82,11 @@ function botonEliminar(id){
         }
     })
 }
+function mostrarDetalles(id) {
+  // Aquí podrías hacer una petición AJAX a una vista de Django
+  // para obtener los detalles del contrato según el ID
+  // y luego mostrarlos en la ventana emergente
+
+  // Por ahora, mostraremos solo el ID del contrato en la ventana emergente
+  document.getElementById("contrato-info").innerText = "Detalles del contrato con ID: " + id;
+}
